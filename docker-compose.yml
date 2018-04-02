@@ -10,7 +10,8 @@ services:
     container_name: elevar-app
     hostname: elevar-app
     environment:
-      - ENVIRONMENT=PRODUCTION
+      - NODE_ENV=PRODUCTION
+      - PORT=9333
     build:  
       context: ./
       dockerfile: Dockerfile
@@ -20,9 +21,10 @@ services:
       - type: bind
         source: ./
         target: /app
+        consistency: consistent
         volume:
           nocopy: true
-      - npm_data:/appnode_modules
+      - npm_data:/app/node_modules
     ports:
       - "9333:9333"
     networks:
