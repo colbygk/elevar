@@ -1,0 +1,29 @@
+version: '3.4'
+volumes:
+  npm_data:
+
+networks:
+  elevar:
+
+services:
+  app:
+    container_name: elevar-app
+    hostname: elevar-app
+    environment:
+      - ENVIRONMENT=PRODUCTION
+    build:  
+      context: ./
+      dockerfile: Dockerfile
+    image: elevar:latest
+    command: npm start
+    volumes:
+      - type: bind
+        source: ./
+        target: /app
+        volume:
+          nocopy: true
+      - npm_data:/appnode_modules
+    ports:
+      - "9333:9333"
+    networks:
+      - elevar
