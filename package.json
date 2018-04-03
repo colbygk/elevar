@@ -8,11 +8,19 @@
     "react-dom": "^16.3.0",
     "react-scripts": "1.1.1"
   },
+  "watch": {
+    "all": {
+      "patterns": ["src"],
+      "extensions": "js,jsx",
+      "ignore": "src/vendor/external.min.js",
+      "quiet": true,
+      "delay": 2500
+    }
+  },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject",
-    "watch": "npm-watch"
+    "eject": "react-scripts eject"
   }
 }
